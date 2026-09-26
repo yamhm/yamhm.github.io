@@ -283,15 +283,16 @@
     75%  { transform: translate(31vw, 7px); }
     100% { transform: translate(62vw, 0); }
   }
+  /* rotation at each waypoint = heading of the upcoming leg (nose leads the turn) */
   @keyframes fly-evade {
-    0%   { transform: translate(-62vw, 0) rotate(0deg); }
-    12%  { transform: translate(-47vw, 18px) rotate(7deg); }
-    22%  { transform: translate(-35vw, -26px) rotate(-11deg); }
-    34%  { transform: translate(-20vw, 12px) rotate(9deg); }
-    46%  { transform: translate(-5vw, -30px) rotate(-9deg); }
-    58%  { transform: translate(10vw, 24px) rotate(11deg); }
-    70%  { transform: translate(25vw, -20px) rotate(-7deg); }
-    84%  { transform: translate(43vw, 14px) rotate(6deg); }
+    0%   { transform: translate(-62vw, 0) rotate(5deg); }
+    12%  { transform: translate(-47vw, 18px) rotate(-15deg); }
+    22%  { transform: translate(-35vw, -26px) rotate(10deg); }
+    34%  { transform: translate(-20vw, 12px) rotate(-11deg); }
+    46%  { transform: translate(-5vw, -30px) rotate(14deg); }
+    58%  { transform: translate(10vw, 24px) rotate(-12deg); }
+    70%  { transform: translate(25vw, -20px) rotate(8deg); }
+    84%  { transform: translate(43vw, 14px) rotate(-3deg); }
     100% { transform: translate(62vw, 0) rotate(0deg); }
   }
   .flyby .bolt {
@@ -305,13 +306,13 @@
     0%   { transform: translate(0, 0); opacity: 0; }
     6%   { opacity: 1; }
     70%  { opacity: 1; }
-    100% { transform: translate(145px, -24px); opacity: 0; }
+    100% { transform: translate(160px, -58px); opacity: 0; }
   }
   @keyframes bolt-low {
     0%   { transform: translate(0, 0); opacity: 0; }
     6%   { opacity: 1; }
     70%  { opacity: 1; }
-    100% { transform: translate(145px, 20px); opacity: 0; }
+    100% { transform: translate(160px, 52px); opacity: 0; }
   }
   .trooper path, .trooper circle { stroke: #dfe6f0; }
 
@@ -355,57 +356,53 @@
       <path d="M10 3 L15 3 M10 29 L15 29"></path>
     </svg>
     <svg class="flyby tie" aria-hidden="true" width="54" height="32" viewBox="0 0 54 32">
-      <g class="bolt-g"><path class="bolt" d="M46 12 L60 10"></path><path class="bolt" d="M46 20 L60 18"></path></g>
-      <g class="bolt-g b2"><path class="bolt" d="M46 13 L60 14"></path><path class="bolt" d="M46 21 L60 22"></path></g>
+      <g class="bolt-g"><path class="bolt" d="M46 12 L60 7"></path><path class="bolt" d="M46 20 L60 15"></path></g>
+      <g class="bolt-g b2"><path class="bolt" d="M46 13 L60 18"></path><path class="bolt" d="M46 21 L60 26"></path></g>
       <circle cx="27" cy="16" r="7"></circle>
       <path d="M20 16 L14 16 M34 16 L40 16"></path>
       <path d="M14 4 L14 28 M40 4 L40 28"></path>
     </svg>
-    <!-- stormtroopers: one at attention with blaster, one waving -->
-    <svg class="doodle trooper keep" aria-hidden="true" style="left:2%; bottom:9%" width="64" height="156" viewBox="0 0 80 195">
-      <path d="M40 6 Q24 6 21 20 Q20 27 23 33 L27 43 Q33 48 40 48 Q47 48 53 43 L57 33 Q60 27 59 20 Q56 6 40 6 Z"></path>
-      <path d="M24 21 L56 21"></path>
-      <path d="M26 25 Q31 31 37 28 M43 28 Q49 31 54 25"></path>
-      <path d="M31 31 L29 40 M49 31 L51 40"></path>
-      <path d="M35 41 L36 45 M40 41 L40 45 M45 41 L44 45"></path>
-      <circle cx="24" cy="37" r="2"></circle>
-      <circle cx="56" cy="37" r="2"></circle>
-      <path d="M35 48 L35 52 M45 48 L45 52"></path>
-      <path d="M28 54 Q40 50 52 54 L54 78 Q40 84 26 78 Z"></path>
-      <path d="M20 58 Q23 52 28 55 M60 58 Q57 52 52 55"></path>
-      <path d="M28 86 L52 86 L52 93 L28 93 Z M35 86 L35 93 M45 86 L45 93"></path>
-      <path d="M26 57 Q17 65 16 80 Q15 90 19 97"></path>
-      <circle cx="20" cy="99" r="2.2"></circle>
-      <path d="M54 57 Q63 65 63 80 Q63 90 60 96"></path>
-      <circle cx="59" cy="98" r="2.2"></circle>
-      <path d="M52 96 L70 104 M64 101 L61 108 M56 98 L54 104"></path>
-      <path d="M30 93 L32 100 M50 93 L48 100 M32 100 Q40 104 48 100"></path>
-      <path d="M33 102 L31 132 M47 102 L49 132"></path>
-      <path d="M28 133 L36 133 M44 133 L52 133"></path>
-      <path d="M31 135 L30 168 M49 135 L50 168"></path>
-      <path d="M30 168 L28 184 L39 184 M50 168 L52 184 L41 184"></path>
+    <!-- stormtroopers: squared armor plates; one at attention with blaster, one waving -->
+    <svg class="doodle trooper keep" aria-hidden="true" style="left:2%; bottom:9%" width="66" height="147" viewBox="0 0 90 200">
+      <path d="M45 5 Q31 5 28 15 L26 26 L28 33 L33 45 L42 50 L48 50 L57 45 L62 33 L64 26 L62 15 Q59 5 45 5 Z"></path>
+      <path d="M28 21 L62 21"></path>
+      <path d="M30 26 L37 31 L44 28 M46 28 L53 31 L60 26"></path>
+      <path d="M35 33 L33 43 M55 33 L57 43"></path>
+      <path d="M26 36 L31 36 L31 42 L26 42 Z M59 36 L64 36 L64 42 L59 42 Z"></path>
+      <path d="M39 42 L45 47 L51 42 M43 44 L43 46 M47 44 L47 46"></path>
+      <path d="M38 52 L52 52 L52 56 L38 56 Z"></path>
+      <path d="M21 60 L34 56 L36 63 L23 67 Z M69 60 L56 56 L54 63 L67 67 Z"></path>
+      <path d="M32 58 L58 58 L59 82 L31 82 Z M36 62 L54 62"></path>
+      <path d="M33 84 L57 84 L57 91 L33 91 Z M41 84 L41 91 M49 84 L49 91"></path>
+      <path d="M31 93 L59 93 L59 100 L31 100 Z M38 93 L38 100 M52 93 L52 100"></path>
+      <path d="M23 68 L19 84 L25 86 L29 70 Z M19 86 L17 100 L23 101 L25 88 Z M16 102 L23 102 L23 108 L16 108 Z"></path>
+      <path d="M67 68 L71 84 L65 86 L61 70 Z M71 86 L73 100 L67 101 L65 88 Z M67 102 L74 102 L74 108 L67 108 Z"></path>
+      <path d="M70 106 L88 98 M75 104 L77 111 M80 101 L81 94"></path>
+      <path d="M40 102 L50 102 L52 108 L45 112 L38 108 Z"></path>
+      <path d="M36 104 L33 134 L41 135 L43 106 Z M54 104 L57 134 L49 135 L47 106 Z"></path>
+      <path d="M31 137 L42 137 L42 142 L31 142 Z M48 137 L59 137 L59 142 L48 142 Z"></path>
+      <path d="M33 144 L32 170 L41 170 L42 144 Z M57 144 L58 170 L49 170 L48 144 Z"></path>
+      <path d="M31 172 L27 184 L44 184 L41 172 Z M59 172 L63 184 L46 184 L49 172 Z"></path>
     </svg>
-    <svg class="doodle trooper keep" aria-hidden="true" style="left:12%; bottom:9%" width="56" height="137" viewBox="0 0 80 195">
-      <path d="M40 6 Q24 6 21 20 Q20 27 23 33 L27 43 Q33 48 40 48 Q47 48 53 43 L57 33 Q60 27 59 20 Q56 6 40 6 Z"></path>
-      <path d="M24 21 L56 21"></path>
-      <path d="M26 25 Q31 31 37 28 M43 28 Q49 31 54 25"></path>
-      <path d="M31 31 L29 40 M49 31 L51 40"></path>
-      <path d="M35 41 L36 45 M40 41 L40 45 M45 41 L44 45"></path>
-      <circle cx="24" cy="37" r="2"></circle>
-      <circle cx="56" cy="37" r="2"></circle>
-      <path d="M35 48 L35 52 M45 48 L45 52"></path>
-      <path d="M28 54 Q40 50 52 54 L54 78 Q40 84 26 78 Z"></path>
-      <path d="M20 58 Q23 52 28 55 M60 58 Q57 52 52 55"></path>
-      <path d="M28 86 L52 86 L52 93 L28 93 Z M35 86 L35 93 M45 86 L45 93"></path>
-      <path d="M26 57 Q17 65 16 80 Q15 90 19 97"></path>
-      <circle cx="20" cy="99" r="2.2"></circle>
-      <path d="M54 57 Q63 51 68 42"></path>
-      <circle cx="69" cy="40" r="2.2"></circle>
-      <path d="M30 93 L32 100 M50 93 L48 100 M32 100 Q40 104 48 100"></path>
-      <path d="M33 102 L31 132 M47 102 L49 132"></path>
-      <path d="M28 133 L36 133 M44 133 L52 133"></path>
-      <path d="M31 135 L30 168 M49 135 L50 168"></path>
-      <path d="M30 168 L28 184 L39 184 M50 168 L52 184 L41 184"></path>
+    <svg class="doodle trooper keep" aria-hidden="true" style="left:12%; bottom:9%" width="58" height="129" viewBox="0 0 90 200">
+      <path d="M45 5 Q31 5 28 15 L26 26 L28 33 L33 45 L42 50 L48 50 L57 45 L62 33 L64 26 L62 15 Q59 5 45 5 Z"></path>
+      <path d="M28 21 L62 21"></path>
+      <path d="M30 26 L37 31 L44 28 M46 28 L53 31 L60 26"></path>
+      <path d="M35 33 L33 43 M55 33 L57 43"></path>
+      <path d="M26 36 L31 36 L31 42 L26 42 Z M59 36 L64 36 L64 42 L59 42 Z"></path>
+      <path d="M39 42 L45 47 L51 42 M43 44 L43 46 M47 44 L47 46"></path>
+      <path d="M38 52 L52 52 L52 56 L38 56 Z"></path>
+      <path d="M21 60 L34 56 L36 63 L23 67 Z M69 60 L56 56 L54 63 L67 67 Z"></path>
+      <path d="M32 58 L58 58 L59 82 L31 82 Z M36 62 L54 62"></path>
+      <path d="M33 84 L57 84 L57 91 L33 91 Z M41 84 L41 91 M49 84 L49 91"></path>
+      <path d="M31 93 L59 93 L59 100 L31 100 Z M38 93 L38 100 M52 93 L52 100"></path>
+      <path d="M23 68 L19 84 L25 86 L29 70 Z M19 86 L17 100 L23 101 L25 88 Z M16 102 L23 102 L23 108 L16 108 Z"></path>
+      <path d="M67 66 L79 56 L83 62 L70 72 Z M80 54 L85 41 L79 38 L76 51 Z M79 32 L86 32 L86 39 L79 39 Z"></path>
+      <path d="M40 102 L50 102 L52 108 L45 112 L38 108 Z"></path>
+      <path d="M36 104 L33 134 L41 135 L43 106 Z M54 104 L57 134 L49 135 L47 106 Z"></path>
+      <path d="M31 137 L42 137 L42 142 L31 142 Z M48 137 L59 137 L59 142 L48 142 Z"></path>
+      <path d="M33 144 L32 170 L41 170 L42 144 Z M57 144 L58 170 L49 170 L48 144 Z"></path>
+      <path d="M31 172 L27 184 L44 184 L41 172 Z M59 172 L63 184 L46 184 L49 172 Z"></path>
     </svg>
     <!-- sparkle -->
     <svg class="doodle twinkle" aria-hidden="true" style="right:-90px; bottom:22%" width="22" height="22" viewBox="0 0 22 22">
