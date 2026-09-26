@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hong Meng Yam</title>
-<meta name="description" content="Hong Meng Yam — Computer Science, Stanford University. Research on getting AI agents to work in the real world.">
+<meta name="description" content="Hong Meng Yam. Building infrastructure for agents to interact with the world.">
 <style>
   :root {
     --bg: #0b0d13;
@@ -95,7 +95,7 @@
   }
 
   /* ---- sections ---- */
-  section { margin-top: 5.5rem; }
+  section { margin-top: 5.5rem; position: relative; }
   h2 {
     font-size: 1.25rem;
     font-weight: normal;
@@ -135,6 +135,7 @@
   }
 
   footer {
+    position: relative;
     margin-top: 5rem;
     padding-top: 1rem;
     border-top: 1px solid var(--rule);
@@ -218,9 +219,45 @@
     }
   }
 
+  /* ---- doodles ---- */
+  .doodle {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.5;
+    z-index: 0;
+  }
+  .doodle path, .doodle circle, .doodle ellipse, .doodle rect, .doodle polyline {
+    fill: none;
+    stroke: var(--ship);
+    stroke-width: 1.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .doodle.warm path, .doodle.warm circle, .doodle.warm ellipse, .doodle.warm rect, .doodle.warm polyline {
+    stroke: var(--glow);
+  }
+  .doodle .fill-dot { fill: var(--ship); stroke: none; }
+  .doodle.warm .fill-dot { fill: var(--glow); }
+  .float-slow   { animation: floaty 7s ease-in-out infinite; }
+  .float-slower { animation: floaty 11s ease-in-out infinite reverse; }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+  .twinkle { animation: tw 3.4s ease-in-out infinite; }
+  .twinkle.late { animation-delay: 1.6s; }
+  @keyframes tw {
+    0%, 100% { opacity: 0.15; }
+    50%      { opacity: 0.65; }
+  }
+  @media (max-width: 1000px) {
+    .doodle { display: none; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .js .reveal { opacity: 1; transform: none; transition: none; }
     .scroll-hint, #ship-dock.complete #ship, #ship-dock.complete .engine-glow { animation: none; }
+    .doodle { animation: none !important; }
     html { scroll-behavior: auto; }
   }
 </style>
@@ -231,9 +268,24 @@
 <div class="wrap">
 
   <header class="hero">
+    <!-- comet -->
+    <svg class="doodle float-slow" aria-hidden="true" style="left:-130px; top:20%" width="90" height="60" viewBox="0 0 90 60">
+      <circle cx="70" cy="20" r="6"></circle>
+      <path d="M62 24 L18 44 M60 16 L8 26 M64 28 L32 52"></path>
+    </svg>
+    <!-- ringed planet -->
+    <svg class="doodle float-slower" aria-hidden="true" style="right:-175px; top:28%" width="120" height="90" viewBox="0 0 120 90">
+      <circle cx="60" cy="45" r="24"></circle>
+      <ellipse cx="60" cy="45" rx="48" ry="12" transform="rotate(-18 60 45)"></ellipse>
+      <path d="M44 34 Q56 29 70 35"></path>
+    </svg>
+    <!-- sparkle -->
+    <svg class="doodle twinkle" aria-hidden="true" style="right:-90px; bottom:22%" width="22" height="22" viewBox="0 0 22 22">
+      <path d="M11 1 L11 21 M1 11 L21 11"></path>
+    </svg>
     <div>
       <h1 class="reveal visible">Hong Meng Yam</h1>
-      <p class="tagline reveal visible" style="--d:0.15s">Computer Science &middot; Stanford University</p>
+      <p class="tagline reveal visible" style="--d:0.15s">Building infrastructure for agents to interact with the world</p>
       <nav class="links reveal visible" style="--d:0.3s">
         <a href="https://scholar.google.com/citations?user=1Gr2hNUAAAAJ&amp;hl=en">Google Scholar</a>
         <a href="https://www.linkedin.com/in/hong-meng-yam/">LinkedIn</a>
@@ -243,27 +295,87 @@
   </header>
 
   <section id="about">
+    <!-- constellation -->
+    <svg class="doodle" aria-hidden="true" style="left:-165px; top:12%" width="110" height="130" viewBox="0 0 110 130">
+      <polyline points="10,110 35,70 30,30 70,45 95,15"></polyline>
+      <circle class="fill-dot" cx="10" cy="110" r="2.5"></circle>
+      <circle class="fill-dot" cx="35" cy="70" r="2.5"></circle>
+      <circle class="fill-dot" cx="30" cy="30" r="2.5"></circle>
+      <circle class="fill-dot" cx="70" cy="45" r="2.5"></circle>
+      <circle class="fill-dot" cx="95" cy="15" r="2.5"></circle>
+    </svg>
+    <!-- battle-station moon -->
+    <svg class="doodle float-slow" aria-hidden="true" style="right:-150px; bottom:-30px" width="90" height="90" viewBox="0 0 90 90">
+      <circle cx="45" cy="45" r="30"></circle>
+      <circle cx="34" cy="34" r="9"></circle>
+      <path d="M16 52 Q45 60 74 52"></path>
+    </svg>
+    <!-- DNA helix, a nod to the wet-lab years -->
+    <svg class="doodle warm float-slower" aria-hidden="true" style="right:-120px; top:8%" width="46" height="110" viewBox="0 0 46 110">
+      <path d="M10 5 Q36 20 10 35 Q36 50 10 65 Q36 80 10 95"></path>
+      <path d="M36 5 Q10 20 36 35 Q10 50 36 65 Q10 80 36 95"></path>
+      <path d="M14 14 L32 14 M14 50 L32 50 M14 86 L32 86"></path>
+    </svg>
     <h2 class="reveal">About</h2>
     <p class="reveal">
-      My research path runs from molecules to models. I started in bioengineering in high
-      school &mdash; designing DNA proximity circuits that detect single-nucleotide
-      mutations without enzymes, and engineering bacteria to clean arsenic from
-      contaminated water. Then I discovered computer science at Stanford, where I&rsquo;m
-      now a master&rsquo;s student working under Chris Manning at the Stanford Artificial
-      Intelligence Laboratory.
+      I started out in a wet lab. In high school I spent my afternoons designing DNA
+      circuits that could flag a single mutated nucleotide without any enzymes, and
+      engineering bacteria to pull arsenic out of contaminated water. What hooked me was
+      not the biology itself. It was the idea that you could program matter: write logic
+      into molecules, release them into a messy, unpredictable environment, and watch
+      them work.
     </p>
     <p class="reveal" style="--d:0.12s">
-      My research asks how we get AI agents to work in the real world. Real environments
-      offer less than benchmarks promise &mdash; less data, messier inputs, tighter
-      compute &mdash; so I work on the pieces that close the gap: sample-efficient
-      training, learning from large-scale unstructured data, and speeding up computations
-      that are too slow to be practical, from knowledge distillation for small language
-      models to Monte Carlo&ndash;corrected PDE solvers. Along the way I build benchmarks,
-      like WebDS, that measure how far agents still have to go.
+      At Stanford I found a faster substrate for that obsession. I did my BS in
+      Mathematics, focusing on computer science and theory, and my MS in Computer
+      Science. While there, I worked under Chris Manning in the NLP Group at the Stanford
+      Artificial Intelligence Laboratory, and the question evolved from programming
+      molecules to teaching machines: how much capability can you draw out of a model
+      when data, parameters, and compute are all scarce?
+    </p>
+    <p class="reveal" style="--d:0.24s">
+      That question now defines my work. I build infrastructure for agents to interact
+      with the world. Real environments offer far less than benchmarks promise: less
+      data, messier inputs, tighter compute. So I work on the pieces that close the gap.
+      I study sample-efficient training and knowledge distillation so small models can
+      punch above their weight, methods for learning from large-scale unstructured data
+      so agents can navigate the web as it actually exists, and ways to accelerate
+      computations too slow to be practical, like Monte Carlo corrected PDE solvers. And
+      I build benchmarks, like WebDS, that measure honestly how far agents still have to
+      go.
     </p>
   </section>
 
   <section id="publications">
+    <!-- satellite -->
+    <svg class="doodle float-slower" aria-hidden="true" style="right:-165px; top:110px" width="110" height="90" viewBox="0 0 110 90">
+      <rect x="45" y="34" width="20" height="16" rx="2" transform="rotate(-12 55 42)"></rect>
+      <rect x="8" y="30" width="26" height="12" rx="1" transform="rotate(-12 21 36)"></rect>
+      <rect x="76" y="44" width="26" height="12" rx="1" transform="rotate(-12 89 50)"></rect>
+      <path d="M34 38 L45 40 M65 46 L76 48 M57 32 Q64 18 78 12"></path>
+      <circle class="fill-dot" cx="80" cy="11" r="2.2"></circle>
+    </svg>
+    <!-- tie fighter -->
+    <svg class="doodle float-slow" aria-hidden="true" style="left:-150px; top:38%" width="90" height="70" viewBox="0 0 90 70">
+      <circle cx="45" cy="35" r="10"></circle>
+      <path d="M35 35 L22 35 M55 35 L68 35"></path>
+      <path d="M22 10 L22 60 M68 10 L68 60"></path>
+    </svg>
+    <!-- astromech droid -->
+    <svg class="doodle" aria-hidden="true" style="right:-140px; top:66%" width="70" height="90" viewBox="0 0 70 90">
+      <path d="M20 35 A15 15 0 0 1 50 35"></path>
+      <rect x="20" y="35" width="30" height="35" rx="3"></rect>
+      <path d="M20 70 L14 82 M50 70 L56 82"></path>
+      <circle class="fill-dot" cx="30" cy="28" r="2.5"></circle>
+      <path d="M26 46 L44 46 M26 54 L44 54"></path>
+    </svg>
+    <!-- sparkles -->
+    <svg class="doodle twinkle late" aria-hidden="true" style="left:-95px; top:15%" width="18" height="18" viewBox="0 0 18 18">
+      <path d="M9 1 L9 17 M1 9 L17 9"></path>
+    </svg>
+    <svg class="doodle twinkle" aria-hidden="true" style="left:-110px; top:82%" width="14" height="14" viewBox="0 0 14 14">
+      <path d="M7 1 L7 13 M1 7 L13 7"></path>
+    </svg>
     <h2 class="reveal">Publications</h2>
 
     <p class="year reveal">2026</p>
@@ -307,7 +419,7 @@
         <span class="pub-venue">CoNLL 2024 (Task)</span>
       </li>
       <li class="reveal" style="--d:0.16s">
-        <span class="pub-title">Hybrid Neural Network&ndash;Monte Carlo Approach for Efficient PDE Solvers</span><br>
+        <span class="pub-title">Hybrid Neural Network-Monte Carlo Approach for Efficient PDE Solvers</span><br>
         <span class="pub-authors"><span class="me">H.&thinsp;M. Yam</span>, E. Hsu, I. Ge</span><br>
         <span class="pub-venue">Preprint 2024</span>
       </li>
@@ -347,6 +459,13 @@
 
     <p class="pub-note reveal">* equal contribution (co-first authors)</p>
   </section>
+
+  <svg class="doodle warm float-slower" aria-hidden="true" style="left:-140px; bottom:60px; position:absolute" width="70" height="100" viewBox="0 0 70 100">
+    <path d="M35 8 Q47 28 47 50 L47 66 L23 66 L23 50 Q23 28 35 8 Z"></path>
+    <circle cx="35" cy="42" r="6"></circle>
+    <path d="M23 56 L12 74 L23 70 M47 56 L58 74 L47 70"></path>
+    <path d="M30 66 L28 80 M35 66 L35 86 M40 66 L42 80"></path>
+  </svg>
 
   <footer class="reveal">
     <p>&copy; 2026 Hong Meng Yam &middot; Full publication list on <a href="https://scholar.google.com/citations?user=1Gr2hNUAAAAJ&amp;hl=en">Google Scholar</a>.</p>
