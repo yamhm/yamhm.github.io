@@ -184,7 +184,7 @@
   }
   #ship .engine-glow {
     stroke: none;
-    fill: var(--glow);
+    fill: var(--ship);
     opacity: 0;
     transition: opacity 1s ease;
   }
@@ -205,7 +205,7 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
-  #ship-dock.complete #ship-caption { color: var(--glow); }
+  #ship-dock.complete #ship-caption { color: var(--ship); }
 
   @media (max-width: 1150px) {
     #ship-dock {
@@ -250,14 +250,51 @@
     0%, 100% { opacity: 0.15; }
     50%      { opacity: 0.65; }
   }
+  .doodle { overflow: visible; }
+  .orbit {
+    transform-box: view-box;
+    transform-origin: 50% 50%;
+    animation: orbit-spin 16s linear infinite;
+  }
+  @keyframes orbit-spin { to { transform: rotate(360deg); } }
+
+  /* ---- hero fly-bys ---- */
+  .flyby {
+    position: absolute;
+    left: 50%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.55;
+    overflow: visible;
+  }
+  .flyby path, .flyby circle {
+    fill: none;
+    stroke: var(--ship);
+    stroke-width: 1.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .flyby.xwing { top: 15%; animation: fly-right 26s linear infinite; }
+  .flyby.tie   { top: 15%; animation: fly-right 26s linear infinite; animation-delay: 2.1s; }
+  @keyframes fly-right {
+    0%   { transform: translate(-62vw, 0); }
+    25%  { transform: translate(-31vw, 12px); }
+    50%  { transform: translate(0vw, -6px); }
+    75%  { transform: translate(31vw, 10px); }
+    100% { transform: translate(62vw, 0); }
+  }
+  .trooper path, .trooper circle { stroke: #dfe6f0; }
+
   @media (max-width: 1000px) {
     .doodle { display: none; }
+    .doodle.keep { display: block; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .js .reveal { opacity: 1; transform: none; transition: none; }
     .scroll-hint, #ship-dock.complete #ship, #ship-dock.complete .engine-glow { animation: none; }
     .doodle { animation: none !important; }
+    .flyby { display: none; }
     html { scroll-behavior: auto; }
   }
 </style>
@@ -273,11 +310,41 @@
       <circle cx="70" cy="20" r="6"></circle>
       <path d="M62 24 L18 44 M60 16 L8 26 M64 28 L32 52"></path>
     </svg>
-    <!-- ringed planet -->
+    <!-- ringed planet with orbiting moon -->
     <svg class="doodle float-slower" aria-hidden="true" style="right:-175px; top:28%" width="120" height="90" viewBox="0 0 120 90">
       <circle cx="60" cy="45" r="24"></circle>
       <ellipse cx="60" cy="45" rx="48" ry="12" transform="rotate(-18 60 45)"></ellipse>
       <path d="M44 34 Q56 29 70 35"></path>
+      <g class="orbit"><circle class="fill-dot" cx="104" cy="45" r="2.5"></circle></g>
+    </svg>
+    <!-- x-wing fly-by, pursued by a tie fighter -->
+    <svg class="flyby xwing" aria-hidden="true" width="56" height="32" viewBox="0 0 56 32">
+      <path d="M6 15 Q28 11 50 16 Q28 21 6 17 Z"></path>
+      <path d="M22 13 Q26 9 30 13"></path>
+      <path d="M27 15 L10 3 M27 17 L10 29"></path>
+      <path d="M10 3 L15 3 M10 29 L15 29"></path>
+    </svg>
+    <svg class="flyby tie" aria-hidden="true" width="54" height="32" viewBox="0 0 54 32">
+      <circle cx="27" cy="16" r="7"></circle>
+      <path d="M20 16 L14 16 M34 16 L40 16"></path>
+      <path d="M14 4 L14 28 M40 4 L40 28"></path>
+    </svg>
+    <!-- chibi stormtroopers -->
+    <svg class="doodle trooper keep float-slow" aria-hidden="true" style="left:2%; bottom:14%" width="60" height="92" viewBox="0 0 60 92">
+      <path d="M30 8 Q16 8 16 24 L16 32 Q16 38 22 40 L38 40 Q44 38 44 32 L44 24 Q44 8 30 8 Z"></path>
+      <path d="M22 23 Q26 28 30 23 Q34 28 38 23"></path>
+      <path d="M25 33 L27 36 M29 33 L31 36 M33 33 L35 36"></path>
+      <path d="M22 40 L38 40 L40 60 L20 60 Z M21 52 L39 52"></path>
+      <path d="M22 42 L12 54 M38 42 L48 33"></path>
+      <path d="M26 60 L25 78 M34 60 L35 78 M25 78 L20 80 M35 78 L40 80"></path>
+    </svg>
+    <svg class="doodle trooper keep" aria-hidden="true" style="left:11%; bottom:12%" width="48" height="74" viewBox="0 0 60 92">
+      <path d="M30 8 Q16 8 16 24 L16 32 Q16 38 22 40 L38 40 Q44 38 44 32 L44 24 Q44 8 30 8 Z"></path>
+      <path d="M22 23 Q26 28 30 23 Q34 28 38 23"></path>
+      <path d="M25 33 L27 36 M29 33 L31 36 M33 33 L35 36"></path>
+      <path d="M22 40 L38 40 L40 60 L20 60 Z M21 52 L39 52"></path>
+      <path d="M22 42 L12 54 M38 42 L48 54"></path>
+      <path d="M26 60 L25 78 M34 60 L35 78 M25 78 L20 80 M35 78 L40 80"></path>
     </svg>
     <!-- sparkle -->
     <svg class="doodle twinkle" aria-hidden="true" style="right:-90px; bottom:22%" width="22" height="22" viewBox="0 0 22 22">
@@ -386,23 +453,19 @@
         <span class="pub-venue">NeurIPS 2026</span>
       </li>
       <li class="reveal" style="--d:0.08s">
+        <span class="pub-title">WebDS: An End-to-End Benchmark for Web-based Data Science</span><br>
+        <span class="pub-authors">E. Hsu*, <span class="me">H.&thinsp;M. Yam*</span>, I. Bouissou, A.&thinsp;M. John, R. Thota, J. Koe, V.&thinsp;S. Putta, G.&thinsp;K. Dharesan, A. Spangher, S. Murty, T. Huang, C.&thinsp;D. Manning</span><br>
+        <span class="pub-venue">ICLR 2026</span>
+      </li>
+      <li class="reveal" style="--d:0.16s">
         <span class="pub-title">Pinetree at SemEval-2026 Task 7: A Large-Scale Failure Analysis of Cultural Grounding in Language Models</span><br>
         <span class="pub-authors">Y.&thinsp;Y. Yam, <span class="me">H.&thinsp;M. Yam</span></span><br>
         <span class="pub-venue">SemEval 2026</span>
       </li>
-      <li class="reveal" style="--d:0.16s">
+      <li class="reveal" style="--d:0.24s">
         <span class="pub-title">Yam at SemEval-2026 Task 4: Failure-Driven Prompt Evolution for Narrative Comparison</span><br>
         <span class="pub-authors">Y.&thinsp;Y. Yam, <span class="me">H.&thinsp;M. Yam</span></span><br>
         <span class="pub-venue">SemEval 2026</span>
-      </li>
-    </ul>
-
-    <p class="year reveal">2025</p>
-    <ul class="pubs">
-      <li class="reveal">
-        <span class="pub-title">WebDS: An End-to-End Benchmark for Web-based Data Science</span><br>
-        <span class="pub-authors">E. Hsu*, <span class="me">H.&thinsp;M. Yam*</span>, I. Bouissou, A.&thinsp;M. John, R. Thota, J. Koe, V.&thinsp;S. Putta, G.&thinsp;K. Dharesan, A. Spangher, S. Murty, T. Huang, C.&thinsp;D. Manning</span><br>
-        <span class="pub-venue">ICLR 2025</span>
       </li>
     </ul>
 
@@ -443,7 +506,7 @@
       </li>
     </ul>
 
-    <p class="year reveal">2021</p>
+    <p class="year reveal">2020</p>
     <ul class="pubs">
       <li class="reveal">
         <span class="pub-title">Bioremediation of Arsenic-Contaminated Water Through Application of Bioengineered Shewanella oneidensis</span><br>
@@ -474,50 +537,68 @@
 </div>
 
 <div id="ship-dock" aria-hidden="true">
-  <!-- stylized top-down starfighter, drawn stroke-by-stroke as you scroll -->
-  <svg id="ship" viewBox="0 0 320 340" xmlns="http://www.w3.org/2000/svg">
-    <!-- engine glows (revealed on completion) -->
-    <circle class="engine-glow" cx="120" cy="238" r="5"></circle>
-    <circle class="engine-glow" cx="200" cy="238" r="5"></circle>
-    <circle class="engine-glow" cx="106" cy="268" r="5"></circle>
-    <circle class="engine-glow" cx="214" cy="268" r="5"></circle>
+  <!-- stylized star destroyer (top view, bow up), built stroke-by-stroke as you scroll -->
+  <svg id="ship" viewBox="0 0 320 360" xmlns="http://www.w3.org/2000/svg">
+    <!-- ion engine glows (revealed on completion) -->
+    <circle class="engine-glow" cx="118" cy="341" r="6"></circle>
+    <circle class="engine-glow" cx="160" cy="341" r="6"></circle>
+    <circle class="engine-glow" cx="202" cy="341" r="6"></circle>
+    <circle class="engine-glow" cx="88"  cy="339" r="3"></circle>
+    <circle class="engine-glow" cx="139" cy="339" r="3"></circle>
+    <circle class="engine-glow" cx="181" cy="339" r="3"></circle>
+    <circle class="engine-glow" cx="232" cy="339" r="3"></circle>
 
-    <!-- 1. fuselage -->
-    <path class="draw" data-start="0.02" data-end="0.16" pathLength="1"
-      d="M160 14 L151 54 L149 120 L149 252 L153 298 L167 298 L171 252 L171 120 L169 54 Z"></path>
-    <!-- 2. nose ridge -->
-    <path class="draw" data-start="0.10" data-end="0.20" pathLength="1"
-      d="M160 14 L160 96"></path>
-    <!-- 3. canopy -->
-    <path class="draw" data-start="0.16" data-end="0.28" pathLength="1"
-      d="M154 98 L166 98 L169 140 L151 140 Z M154 112 L166 112 M153 126 L167 126"></path>
-    <!-- 4. astromech dome -->
-    <circle class="draw" data-start="0.24" data-end="0.32" pathLength="1"
-      cx="160" cy="166" r="8"></circle>
-    <!-- 5. upper wings -->
-    <path class="draw" data-start="0.30" data-end="0.46" pathLength="1"
-      d="M149 214 L28 258 L28 270 L149 230 Z"></path>
-    <path class="draw" data-start="0.30" data-end="0.46" pathLength="1"
-      d="M171 214 L292 258 L292 270 L171 230 Z"></path>
-    <!-- 6. lower wings -->
-    <path class="draw" data-start="0.42" data-end="0.58" pathLength="1"
-      d="M149 236 L42 296 L42 308 L149 254 Z"></path>
-    <path class="draw" data-start="0.42" data-end="0.58" pathLength="1"
-      d="M171 236 L278 296 L278 308 L171 254 Z"></path>
-    <!-- 7. engines -->
-    <circle class="draw" data-start="0.56" data-end="0.66" pathLength="1" cx="120" cy="230" r="9"></circle>
-    <circle class="draw" data-start="0.56" data-end="0.66" pathLength="1" cx="200" cy="230" r="9"></circle>
-    <circle class="draw" data-start="0.60" data-end="0.70" pathLength="1" cx="106" cy="260" r="9"></circle>
-    <circle class="draw" data-start="0.60" data-end="0.70" pathLength="1" cx="214" cy="260" r="9"></circle>
-    <!-- 8. wingtip cannons -->
-    <path class="draw" data-start="0.68" data-end="0.82" pathLength="1"
-      d="M28 264 L28 182 M24 190 L28 182 L32 190"></path>
-    <path class="draw" data-start="0.68" data-end="0.82" pathLength="1"
-      d="M292 264 L292 182 M288 190 L292 182 L296 190"></path>
-    <path class="draw" data-start="0.74" data-end="0.88" pathLength="1"
-      d="M42 302 L42 214 M38 222 L42 214 L46 222"></path>
-    <path class="draw" data-start="0.74" data-end="0.88" pathLength="1"
-      d="M278 302 L278 214 M274 222 L278 214 L282 222"></path>
+    <!-- 1. hull wedge -->
+    <path class="draw" data-start="0.02" data-end="0.14" pathLength="1"
+      d="M160 14 L36 318 L284 318 Z"></path>
+    <!-- 2. keel line -->
+    <path class="draw" data-start="0.10" data-end="0.18" pathLength="1"
+      d="M160 42 L160 316"></path>
+    <!-- 3. hull plating creases -->
+    <path class="draw" data-start="0.15" data-end="0.25" pathLength="1"
+      d="M148 52 L58 296 M172 52 L262 296"></path>
+    <!-- 4. first terrace -->
+    <path class="draw" data-start="0.22" data-end="0.33" pathLength="1"
+      d="M160 80 L94 306 L226 306 Z"></path>
+    <!-- 5. second terrace -->
+    <path class="draw" data-start="0.30" data-end="0.40" pathLength="1"
+      d="M160 140 L124 306 L196 306 Z"></path>
+    <!-- 6. forward hangar notch -->
+    <path class="draw" data-start="0.36" data-end="0.42" pathLength="1"
+      d="M153 186 L167 186 L167 202 L153 202 Z"></path>
+    <!-- 7. superstructure block -->
+    <path class="draw" data-start="0.40" data-end="0.50" pathLength="1"
+      d="M140 242 L180 242 L186 306 L134 306 Z M138 258 L182 258"></path>
+    <!-- 8. command tower neck -->
+    <path class="draw" data-start="0.48" data-end="0.56" pathLength="1"
+      d="M152 250 L168 250 L166 264 L154 264 Z"></path>
+    <!-- 9. bridge -->
+    <path class="draw" data-start="0.52" data-end="0.61" pathLength="1"
+      d="M130 264 L190 264 L190 276 L130 276 Z M130 270 L190 270"></path>
+    <!-- 10. deflector domes -->
+    <circle class="draw" data-start="0.58" data-end="0.65" pathLength="1" cx="136" cy="260" r="5"></circle>
+    <circle class="draw" data-start="0.58" data-end="0.65" pathLength="1" cx="184" cy="260" r="5"></circle>
+    <!-- 11. engine housing -->
+    <path class="draw" data-start="0.63" data-end="0.70" pathLength="1"
+      d="M84 318 L84 332 L236 332 L236 318"></path>
+    <!-- 12. main ion engines -->
+    <circle class="draw" data-start="0.67" data-end="0.74" pathLength="1" cx="118" cy="341" r="10"></circle>
+    <circle class="draw" data-start="0.67" data-end="0.74" pathLength="1" cx="160" cy="341" r="10"></circle>
+    <circle class="draw" data-start="0.67" data-end="0.74" pathLength="1" cx="202" cy="341" r="10"></circle>
+    <!-- 13. auxiliary engines -->
+    <circle class="draw" data-start="0.72" data-end="0.78" pathLength="1" cx="88"  cy="339" r="4.5"></circle>
+    <circle class="draw" data-start="0.72" data-end="0.78" pathLength="1" cx="139" cy="339" r="4.5"></circle>
+    <circle class="draw" data-start="0.72" data-end="0.78" pathLength="1" cx="181" cy="339" r="4.5"></circle>
+    <circle class="draw" data-start="0.72" data-end="0.78" pathLength="1" cx="232" cy="339" r="4.5"></circle>
+    <!-- 14. port turbolaser batteries -->
+    <path class="draw" data-start="0.77" data-end="0.84" pathLength="1"
+      d="M104 262 L96 266 M114 234 L106 238 M124 206 L116 210"></path>
+    <!-- 15. starboard turbolaser batteries -->
+    <path class="draw" data-start="0.77" data-end="0.84" pathLength="1"
+      d="M216 262 L224 266 M206 234 L214 238 M196 206 L204 210"></path>
+    <!-- 16. spine surface detail -->
+    <path class="draw" data-start="0.82" data-end="0.88" pathLength="1"
+      d="M156 110 L164 110 M154 128 L166 128 M152 146 L168 146 M150 164 L170 164"></path>
   </svg>
   <div id="ship-caption">standby</div>
 </div>
@@ -605,13 +686,14 @@
 
   var captions = [
     [0.0,  'standby'],
-    [0.05, 'assembling fuselage…'],
-    [0.18, 'fitting canopy…'],
-    [0.26, 'astromech loaded'],
-    [0.34, 'attaching s-foils…'],
-    [0.58, 'mounting engines…'],
-    [0.70, 'arming cannons…'],
-    [0.90, 's-foils locked in attack position']
+    [0.04, 'laying the keel…'],
+    [0.15, 'welding hull plating…'],
+    [0.30, 'raising the superstructure…'],
+    [0.48, 'constructing command tower…'],
+    [0.58, 'mounting deflector domes…'],
+    [0.63, 'fitting ion engines…'],
+    [0.77, 'arming turbolasers…'],
+    [0.90, 'star destroyer operational']
   ];
 
   function updateShip() {
