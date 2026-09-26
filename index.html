@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hong Meng Yam</title>
+<meta name="description" content="Hong Meng Yam — Computer Science, Stanford University. Research on data-efficient training, knowledge distillation, and LLM benchmarking.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #5a5a5a;
+    --accent: #8c1515; /* Stanford cardinal */
+    --rule: #e4e4e4;
+    --chip-bg: #f4f1f1;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181c;
+      --text: #e8e8e8;
+      --muted: #9a9a9a;
+      --accent: #e07b7b;
+      --rule: #2e3238;
+      --chip-bg: #22262c;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 5rem;
+  }
+  header h1 {
+    font-size: 2.1rem;
+    font-weight: normal;
+    letter-spacing: 0.01em;
+  }
+  header .tagline {
+    color: var(--muted);
+    margin-top: 0.35rem;
+    font-size: 1.05rem;
+  }
+  nav.links {
+    margin-top: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 0.9rem;
+  }
+  nav.links a {
+    color: var(--accent);
+    text-decoration: none;
+    margin-right: 1.1rem;
+  }
+  nav.links a:hover { text-decoration: underline; }
+  section { margin-top: 2.8rem; }
+  h2 {
+    font-size: 1.25rem;
+    font-weight: normal;
+    font-variant: small-caps;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.35rem;
+    margin-bottom: 1.1rem;
+  }
+  p + p { margin-top: 0.9rem; }
+  a { color: var(--accent); }
+  .interests {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 0.82rem;
+  }
+  .interests span {
+    background: var(--chip-bg);
+    border-radius: 999px;
+    padding: 0.25rem 0.8rem;
+    color: var(--muted);
+  }
+  .year {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin: 1.6rem 0 0.6rem;
+  }
+  .year:first-of-type { margin-top: 0; }
+  ul.pubs { list-style: none; }
+  ul.pubs li {
+    margin-bottom: 1.05rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--rule);
+  }
+  .pub-title { font-weight: bold; }
+  .pub-authors { color: var(--muted); font-size: 0.95rem; }
+  .pub-venue { font-style: italic; font-size: 0.95rem; }
+  .me { color: var(--text); }
+  footer {
+    margin-top: 4rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Hong Meng Yam</h1>
+    <p class="tagline">Computer Science · Stanford University</p>
+    <nav class="links">
+      <a href="https://scholar.google.com/citations?user=1Gr2hNUAAAAJ&amp;hl=en">Google Scholar</a>
+      <a href="https://www.linkedin.com/in/hong-meng-yam/">LinkedIn</a>
+      <a href="https://github.com/yamhm">GitHub</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      I am a master&rsquo;s student in Computer Science at Stanford University, where I do
+      research at the Stanford Artificial Intelligence Laboratory. My work centers on
+      making language models more efficient and better understood &mdash; from
+      sample-efficient pre-training and knowledge distillation for small language models
+      to building benchmarks that probe what models can and cannot do.
+    </p>
+    <p>
+      Before turning to machine learning, I worked in molecular diagnostics and
+      bioengineering, developing DNA proximity circuits for biomarker detection and
+      bioremediation approaches for arsenic-contaminated water.
+    </p>
+    <div class="interests">
+      <span>data-efficient training</span>
+      <span>knowledge distillation</span>
+      <span>small language models</span>
+      <span>LLM benchmarking &amp; evaluation</span>
+      <span>NLP</span>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <p class="year">2026</p>
+    <ul class="pubs">
+      <li>
+        <span class="pub-title">MC: Monte Carlo Correction for Fast Elliptic PDE Solving</span><br>
+        <span class="pub-authors">E. Hsu, <span class="me">H.&thinsp;M. Yam</span>, I. Ge</span><br>
+        <span class="pub-venue">NeurIPS 2026</span>
+      </li>
+      <li>
+        <span class="pub-title">Pinetree at SemEval-2026 Task 7: A Large-Scale Failure Analysis of Cultural Grounding in Language Models</span><br>
+        <span class="pub-authors">Y.&thinsp;Y. Yam, <span class="me">H.&thinsp;M. Yam</span></span><br>
+        <span class="pub-venue">Proceedings of the 20th International Workshop on Semantic Evaluation (SemEval 2026)</span>
+      </li>
+      <li>
+        <span class="pub-title">Yam at SemEval-2026 Task 4: Failure-Driven Prompt Evolution for Narrative Comparison</span><br>
+        <span class="pub-authors">Y.&thinsp;Y. Yam, <span class="me">H.&thinsp;M. Yam</span></span><br>
+        <span class="pub-venue">Proceedings of the 20th International Workshop on Semantic Evaluation (SemEval 2026)</span>
+      </li>
+    </ul>
+
+    <p class="year">2025</p>
+    <ul class="pubs">
+      <li>
+        <span class="pub-title">WebDS: An End-to-End Benchmark for Web-based Data Science</span><br>
+        <span class="pub-authors">E. Hsu, <span class="me">H.&thinsp;M. Yam</span>, I. Bouissou, A.&thinsp;M. John, R. Thota, J. Koe, V.&thinsp;S. Putta, et&nbsp;al.</span><br>
+        <span class="pub-venue">ICLR 2025</span>
+      </li>
+    </ul>
+
+    <p class="year">2024</p>
+    <ul class="pubs">
+      <li>
+        <span class="pub-title">What Should Baby Models Read? Exploring Sample-Efficient Data Composition on Model Performance</span><br>
+        <span class="pub-authors"><span class="me">H.&thinsp;M. Yam</span>, N.&thinsp;J. Paek</span><br>
+        <span class="pub-venue">The 2nd BabyLM Challenge, CoNLL 2024</span>
+      </li>
+      <li>
+        <span class="pub-title">Teaching Tiny Minds: Exploring Methods to Enhance Knowledge Distillation for Small Language Models</span><br>
+        <span class="pub-authors"><span class="me">H.&thinsp;M. Yam</span>, N. Paek</span><br>
+        <span class="pub-venue">The 2nd BabyLM Challenge, CoNLL 2024</span>
+      </li>
+      <li>
+        <span class="pub-title">Hybrid Neural Network&ndash;Monte Carlo Approach for Efficient PDE Solvers</span><br>
+        <span class="pub-authors"><span class="me">H.&thinsp;M. Yam</span>, E. Hsu, I. Ge</span><br>
+        <span class="pub-venue">Preprint, 2024</span>
+      </li>
+    </ul>
+
+    <p class="year">2023</p>
+    <ul class="pubs">
+      <li>
+        <span class="pub-title">Stanford MLab at SemEval-2023 Task 10: Exploring GloVe- and Transformer-Based Methods for the Explainable Detection of Online Sexism</span><br>
+        <span class="pub-authors">A. Wan, <span class="me">H.&thinsp;M. Yam</span>, S. Yogeswaran, B. Zhou, H.&thinsp;J. Choi, T. Chow</span><br>
+        <span class="pub-venue">Proceedings of the 17th International Workshop on Semantic Evaluation (SemEval 2023)</span>
+      </li>
+    </ul>
+
+    <p class="year">2022</p>
+    <ul class="pubs">
+      <li>
+        <span class="pub-title">Enzyme-Free and Isothermal Discrimination of microRNA Point Mutations Using a DNA Split Proximity Circuit with Turn-On Fluorescence Readout</span><br>
+        <span class="pub-authors">Y.&thinsp;S. Ang, X. Qiu, <span class="me">H.&thinsp;M. Yam</span>, N. Wu, L.&thinsp;Y.&thinsp;L. Yung</span><br>
+        <span class="pub-venue">Biosensors and Bioelectronics</span>
+      </li>
+    </ul>
+
+    <p class="year">2021</p>
+    <ul class="pubs">
+      <li>
+        <span class="pub-title">Bioremediation of Arsenic-Contaminated Water Through Application of Bioengineered Shewanella oneidensis</span><br>
+        <span class="pub-authors"><span class="me">H.&thinsp;M. Yam</span>, S.&thinsp;K.&thinsp;W. Leong, X. Qiu, N. Zaiden</span><br>
+        <span class="pub-venue">IRC-SET 2020: Proceedings of the 6th IRC Conference on Science, Engineering and Technology</span>
+      </li>
+      <li>
+        <span class="pub-title">DNA Proximity Circuit: A Universal Platform for Analyzing Biomarkers</span><br>
+        <span class="pub-authors">X. Qiu, <span class="me">H.&thinsp;M. Yam</span>, N. Wu, Y.&thinsp;S. Ang, L.&thinsp;Y.&thinsp;L. Yung</span><br>
+        <span class="pub-venue">IRC-SET 2020: Proceedings of the 6th IRC Conference on Science, Engineering and Technology</span>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Hong Meng Yam · A full publication list is on <a href="https://scholar.google.com/citations?user=1Gr2hNUAAAAJ&amp;hl=en">Google Scholar</a>.</p>
+  </footer>
+
+</div>
+</body>
+</html>
