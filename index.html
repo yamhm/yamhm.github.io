@@ -184,7 +184,7 @@
   }
   #ship .engine-glow {
     stroke: none;
-    fill: var(--ship);
+    fill: var(--glow);
     opacity: 0;
     transition: opacity 1s ease;
   }
@@ -205,7 +205,7 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
-  #ship-dock.complete #ship-caption { color: var(--ship); }
+  #ship-dock.complete #ship-caption { color: var(--glow); }
 
   @media (max-width: 1150px) {
     #ship-dock {
@@ -537,68 +537,50 @@
 </div>
 
 <div id="ship-dock" aria-hidden="true">
-  <!-- stylized star destroyer (top view, bow up), built stroke-by-stroke as you scroll -->
-  <svg id="ship" viewBox="0 0 320 360" xmlns="http://www.w3.org/2000/svg">
-    <!-- ion engine glows (revealed on completion) -->
-    <circle class="engine-glow" cx="118" cy="341" r="6"></circle>
-    <circle class="engine-glow" cx="160" cy="341" r="6"></circle>
-    <circle class="engine-glow" cx="202" cy="341" r="6"></circle>
-    <circle class="engine-glow" cx="88"  cy="339" r="3"></circle>
-    <circle class="engine-glow" cx="139" cy="339" r="3"></circle>
-    <circle class="engine-glow" cx="181" cy="339" r="3"></circle>
-    <circle class="engine-glow" cx="232" cy="339" r="3"></circle>
+  <!-- stylized top-down starfighter, drawn stroke-by-stroke as you scroll -->
+  <svg id="ship" viewBox="0 0 320 340" xmlns="http://www.w3.org/2000/svg">
+    <!-- engine glows (revealed on completion) -->
+    <circle class="engine-glow" cx="120" cy="238" r="5"></circle>
+    <circle class="engine-glow" cx="200" cy="238" r="5"></circle>
+    <circle class="engine-glow" cx="106" cy="268" r="5"></circle>
+    <circle class="engine-glow" cx="214" cy="268" r="5"></circle>
 
-    <!-- 1. hull wedge -->
-    <path class="draw" data-start="0.02" data-end="0.14" pathLength="1"
-      d="M160 14 L36 318 L284 318 Z"></path>
-    <!-- 2. keel line -->
-    <path class="draw" data-start="0.10" data-end="0.18" pathLength="1"
-      d="M160 42 L160 316"></path>
-    <!-- 3. hull plating creases -->
-    <path class="draw" data-start="0.15" data-end="0.25" pathLength="1"
-      d="M148 52 L58 296 M172 52 L262 296"></path>
-    <!-- 4. first terrace -->
-    <path class="draw" data-start="0.22" data-end="0.33" pathLength="1"
-      d="M160 80 L94 306 L226 306 Z"></path>
-    <!-- 5. second terrace -->
-    <path class="draw" data-start="0.30" data-end="0.40" pathLength="1"
-      d="M160 140 L124 306 L196 306 Z"></path>
-    <!-- 6. forward hangar notch -->
-    <path class="draw" data-start="0.36" data-end="0.42" pathLength="1"
-      d="M153 186 L167 186 L167 202 L153 202 Z"></path>
-    <!-- 7. superstructure block -->
-    <path class="draw" data-start="0.40" data-end="0.50" pathLength="1"
-      d="M140 242 L180 242 L186 306 L134 306 Z M138 258 L182 258"></path>
-    <!-- 8. command tower neck -->
-    <path class="draw" data-start="0.48" data-end="0.56" pathLength="1"
-      d="M152 250 L168 250 L166 264 L154 264 Z"></path>
-    <!-- 9. bridge -->
-    <path class="draw" data-start="0.52" data-end="0.61" pathLength="1"
-      d="M130 264 L190 264 L190 276 L130 276 Z M130 270 L190 270"></path>
-    <!-- 10. deflector domes -->
-    <circle class="draw" data-start="0.58" data-end="0.65" pathLength="1" cx="136" cy="260" r="5"></circle>
-    <circle class="draw" data-start="0.58" data-end="0.65" pathLength="1" cx="184" cy="260" r="5"></circle>
-    <!-- 11. engine housing -->
-    <path class="draw" data-start="0.63" data-end="0.70" pathLength="1"
-      d="M84 318 L84 332 L236 332 L236 318"></path>
-    <!-- 12. main ion engines -->
-    <circle class="draw" data-start="0.67" data-end="0.74" pathLength="1" cx="118" cy="341" r="10"></circle>
-    <circle class="draw" data-start="0.67" data-end="0.74" pathLength="1" cx="160" cy="341" r="10"></circle>
-    <circle class="draw" data-start="0.67" data-end="0.74" pathLength="1" cx="202" cy="341" r="10"></circle>
-    <!-- 13. auxiliary engines -->
-    <circle class="draw" data-start="0.72" data-end="0.78" pathLength="1" cx="88"  cy="339" r="4.5"></circle>
-    <circle class="draw" data-start="0.72" data-end="0.78" pathLength="1" cx="139" cy="339" r="4.5"></circle>
-    <circle class="draw" data-start="0.72" data-end="0.78" pathLength="1" cx="181" cy="339" r="4.5"></circle>
-    <circle class="draw" data-start="0.72" data-end="0.78" pathLength="1" cx="232" cy="339" r="4.5"></circle>
-    <!-- 14. port turbolaser batteries -->
-    <path class="draw" data-start="0.77" data-end="0.84" pathLength="1"
-      d="M104 262 L96 266 M114 234 L106 238 M124 206 L116 210"></path>
-    <!-- 15. starboard turbolaser batteries -->
-    <path class="draw" data-start="0.77" data-end="0.84" pathLength="1"
-      d="M216 262 L224 266 M206 234 L214 238 M196 206 L204 210"></path>
-    <!-- 16. spine surface detail -->
-    <path class="draw" data-start="0.82" data-end="0.88" pathLength="1"
-      d="M156 110 L164 110 M154 128 L166 128 M152 146 L168 146 M150 164 L170 164"></path>
+    <!-- 1. fuselage -->
+    <path class="draw" data-start="0.02" data-end="0.16" pathLength="1"
+      d="M160 14 L151 54 L149 120 L149 252 L153 298 L167 298 L171 252 L171 120 L169 54 Z"></path>
+    <!-- 2. nose ridge -->
+    <path class="draw" data-start="0.10" data-end="0.20" pathLength="1"
+      d="M160 14 L160 96"></path>
+    <!-- 3. canopy -->
+    <path class="draw" data-start="0.16" data-end="0.28" pathLength="1"
+      d="M154 98 L166 98 L169 140 L151 140 Z M154 112 L166 112 M153 126 L167 126"></path>
+    <!-- 4. astromech dome -->
+    <circle class="draw" data-start="0.24" data-end="0.32" pathLength="1"
+      cx="160" cy="166" r="8"></circle>
+    <!-- 5. upper wings -->
+    <path class="draw" data-start="0.30" data-end="0.46" pathLength="1"
+      d="M149 214 L28 258 L28 270 L149 230 Z"></path>
+    <path class="draw" data-start="0.30" data-end="0.46" pathLength="1"
+      d="M171 214 L292 258 L292 270 L171 230 Z"></path>
+    <!-- 6. lower wings -->
+    <path class="draw" data-start="0.42" data-end="0.58" pathLength="1"
+      d="M149 236 L42 296 L42 308 L149 254 Z"></path>
+    <path class="draw" data-start="0.42" data-end="0.58" pathLength="1"
+      d="M171 236 L278 296 L278 308 L171 254 Z"></path>
+    <!-- 7. engines -->
+    <circle class="draw" data-start="0.56" data-end="0.66" pathLength="1" cx="120" cy="230" r="9"></circle>
+    <circle class="draw" data-start="0.56" data-end="0.66" pathLength="1" cx="200" cy="230" r="9"></circle>
+    <circle class="draw" data-start="0.60" data-end="0.70" pathLength="1" cx="106" cy="260" r="9"></circle>
+    <circle class="draw" data-start="0.60" data-end="0.70" pathLength="1" cx="214" cy="260" r="9"></circle>
+    <!-- 8. wingtip cannons -->
+    <path class="draw" data-start="0.68" data-end="0.82" pathLength="1"
+      d="M28 264 L28 182 M24 190 L28 182 L32 190"></path>
+    <path class="draw" data-start="0.68" data-end="0.82" pathLength="1"
+      d="M292 264 L292 182 M288 190 L292 182 L296 190"></path>
+    <path class="draw" data-start="0.74" data-end="0.88" pathLength="1"
+      d="M42 302 L42 214 M38 222 L42 214 L46 222"></path>
+    <path class="draw" data-start="0.74" data-end="0.88" pathLength="1"
+      d="M278 302 L278 214 M274 222 L278 214 L282 222"></path>
   </svg>
   <div id="ship-caption">standby</div>
 </div>
@@ -686,14 +668,13 @@
 
   var captions = [
     [0.0,  'standby'],
-    [0.04, 'laying the keel…'],
-    [0.15, 'welding hull plating…'],
-    [0.30, 'raising the superstructure…'],
-    [0.48, 'constructing command tower…'],
-    [0.58, 'mounting deflector domes…'],
-    [0.63, 'fitting ion engines…'],
-    [0.77, 'arming turbolasers…'],
-    [0.90, 'star destroyer operational']
+    [0.05, 'assembling fuselage…'],
+    [0.18, 'fitting canopy…'],
+    [0.26, 'astromech loaded'],
+    [0.34, 'attaching s-foils…'],
+    [0.58, 'mounting engines…'],
+    [0.70, 'arming cannons…'],
+    [0.90, 's-foils locked in attack position']
   ];
 
   function updateShip() {
